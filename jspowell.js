@@ -6,8 +6,7 @@
  * ©2019-2020 David Mickisch, Felix E. Klee
  */
 
-import {minimize_Powell} from "optimization-js";
-import dummy_minimize from "optimization-js";
+var optimjs = require("optimization-js");
 
 (function() {
     "use strict";
@@ -22,7 +21,7 @@ import dummy_minimize from "optimization-js";
     };
 
     /**
-     * Genetic Optimizer.
+     * Iterator using Powell's conjugate direction method.
      *
      * @param options {object} options for the optimizer 
      *   @param options.length {Number} the length of the chromosome
@@ -30,7 +29,7 @@ import dummy_minimize from "optimization-js";
      *   @param options.fitness {Function} the fitness function (passed an
      *   individual, return a number)
      */
-    let PowellIterator = function(options) {
+    let JSPowell = function(options) {
         let length = options.length || err("Expected length parameter.");
         let radix = options.radix || err("Expected radix parameter.");
         let fitness = options.fitness || err("Expected fitness parameter.");
@@ -62,21 +61,21 @@ import dummy_minimize from "optimization-js";
         }
 
         var optimize = function(x0) {
-            return minimize_Powell((x) => -fitness(x), x0)
+            return optimjs.minimize_Powell((x) => -fitness(x), x0)
         }
 
         return self;
     };
 
-    var PowellIteratorVERSION = "0.1.0";
+    JSPowell.VERSION = "1.0.1";
 
     // export the object for Node and the browser.
     if (typeof exports != 'undefined' && !exports.nodeType) {
         if (typeof module != 'undefined' && !module.nodeType && module.exports) {
-            exports = module.exports = PowellIterator;
+            exports = module.exports = JSPowell;
         }
-        exports.PowellIterator = PowellIterator;
+        exports.JSPowell = JSPowell;
     } else {
-        root.PowellIterator = PowellIterator;
+        root.JSPowell = JSPowell;
     }
 })();
