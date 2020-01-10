@@ -1,8 +1,8 @@
 {
-  "name": "jspm",
+  "name": "jspowell",
   "version": "1.0.0",
   "description": "Interface to Powell's method compatible with Cory McCartan's jsga.",
-  "main": "jspm.js",
+  "main": "jspowell.js",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/feklee/powell#readme",
   "files": [
-      "jspm.js"
+      "jspowell.js"
   ],
   "dependencies": {
     "optimization-js": "^1.5.0"
