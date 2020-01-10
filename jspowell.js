@@ -80,5 +80,3 @@ import dummy_minimize from "optimization-js";
         root.PowellIterator = PowellIterator;
     }
 })();
-
-export default PowellIterator
